@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/activity_main"
+    >
+
+
+    <Button
+        android:id="@+id/btnSend"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+
+
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="10sp"
+        app:backgroundTint="#DCB5B5"
+        app:icon="@drawable/ic_send_button_foreground" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/btnSend"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/messageField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/text_layout"
+        android:id="@+id/list_of_messages"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        />
+
+
+</RelativeLayout>
+
+
+
+
