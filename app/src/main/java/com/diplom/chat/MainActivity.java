@@ -2,7 +2,6 @@ package com.diplom.chat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == SIGN_IN_CODE) {
-            if(resultCode == RESULT_OK) {
+        if (requestCode == SIGN_IN_CODE) {
+            if (resultCode == RESULT_OK) {
                 Snackbar.make(activity_main, "Вы авторизованы", Snackbar.LENGTH_LONG).show();
                 displayAllMessages();
             } else {
@@ -46,11 +48,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FirebaseApp.initializeApp(this);
+
         activity_main = findViewById(R.id.activity_main);
         Button sendBtn = (Button) findViewById(R.id.btnSend);
         sendBtn.setOnClickListener(v -> {
             EditText textField = findViewById(R.id.messageField);
-            if(textField.getText().toString().equals(""))
+            if (textField.getText().toString().equals(""))
                 return;
 
             FirebaseDatabase.getInstance().getReference().push().setValue(
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Пользователь еще не авторизован
-        if(FirebaseAuth.getInstance().getCurrentUser() == null)
+        if (FirebaseAuth.getInstance().getCurrentUser() == null)
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SIGN_IN_CODE);
         else {
             Snackbar.make(activity_main, "Вы авторизованы", Snackbar.LENGTH_LONG).show();
@@ -73,7 +77,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayAllMessages() {
         ListView listOfMessages = findViewById(R.id.list_of_messages);
-        FirebaseListAdapter<Message> adapter = new FirebaseListAdapter<Message>(this, Message.class, R.layout.list_item, FirebaseDatabase.getInstance().getReference()) {
+        //this, Message.class, R.layout.list_item, FirebaseDatabase.getInstance().getReference()
+        FirebaseListOptions.Builder<Message> builder = new FirebaseListOptions.Builder<>();
+        builder.setLayout(R.layout.list_item);
+        //todo add query
+
+        FirebaseListAdapter<Message> adapter = new FirebaseListAdapter<Message>(builder.build()) {
             @Override
             protected void populateView(View v, Message model, int position) {
                 TextView mess_user, mess_time, mess_text;

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "476369148586",
+    "firebase_url": "https://chat-a28b8-default-rtdb.firebaseio.com",
+    "project_id": "chat-a28b8",
+    "storage_bucket": "chat-a28b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476369148586:android:c2f8a46a73723ee559ced3",
+        "android_client_info": {
+          "package_name": "com.diplom.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476369148586-78cjg2894dma9dq1tp2t4idjjgmfaens.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.diplom.chatapp",
+            "certificate_hash": "e57e0f50f109c8fbd8acfae6a12766faf2c56e72"
+          }
+        },
+        {
+          "client_id": "476369148586-spmr41haflbcvgdo70vfc8her4n55ba3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiinmoNsD1hgGmHa3M6L5tCzOqvycjJ_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476369148586-spmr41haflbcvgdo70vfc8her4n55ba3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
